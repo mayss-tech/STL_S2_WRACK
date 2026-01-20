@@ -1,0 +1,9 @@
+#Les bibliothèques ci-après sont requises pour lancer et exécuter l’ensemble des scripts du projet
+
+earthengine_api==0.1.382 #pour accéder et analyser les données géospatiales massives de Google Earth Engine
+matplotlib==3.10.8  #visualisation  2D/3D et génération de graphiques 
+numpy==2.4.1  #manipulation de tableaux multidimensionnels
+pandas==2.3.3 #manipulation et analyse de données tabulaires structurées (DataFrames, séries temporelles)
+pytz==2025.2 #gestion précise des fuseaux horaires
+scipy==1.17.0  #algorithmes scientifiques avancés (statistiques, interpolation, optimisation, etc.)
+seaborn==0.13.2 #visualisation statistique basée sur matplotlib
