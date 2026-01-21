@@ -1,20 +1,10 @@
 import ee
 
-def verifier_gee():
-    etat = {"authentifie": False, "initialise": False}
-    # Vérifie authentification
-    try:
-        ee.Authenticate()
-        etat["authentifie"] = True
-    except Exception as e:
-        etat["authentifie"] = False
-
-    # Vérifie initialisation
+def init_gee():
     try:
         ee.Initialize()
-        etat["initialise"] = True
+        return True
     except Exception:
-        etat["initialise"] = False
-
-    return etat
-print(verifier_gee())
+        ee.Authenticate()
+        ee.Initialize()
+        return True

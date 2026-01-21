@@ -1,13 +1,9 @@
 import ee
-from ee_init import verifier_gee
-from geometries import build_roi_featurecollection
+from ee_init import init_gee
+from .geometries import build_roi_featurecollection
 
 # --- Init GEE ---
-etat = verifier_gee()
-if not etat.get("authentifie", False):
-    ee.Authenticate()
-if not etat.get("initialise", False):
-    ee.Initialize()
+init_gee()
 
 # --- ROI ---
 ROI_STL = build_roi_featurecollection(ee)

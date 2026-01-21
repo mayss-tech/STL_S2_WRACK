@@ -1,5 +1,5 @@
 import ee
-from Input.s2_collections import S2_joined
+
 
 # --- seuil probabilité nuage (en %) --- 
 MAX_CLOUD_PROB = 65
@@ -28,11 +28,4 @@ def mask_water(image):
         image
     )
 
-# --- Pipeline ---
-S2_processed = (
-    S2_joined
-    .map(add_indices)
-    .map(mask_clouds)
-    .map(mask_water)
-)
 

@@ -7,3 +7,4 @@ pandas==2.3.3 #manipulation et analyse de données tabulaires structurées (Data
 pytz==2025.2 #gestion précise des fuseaux horaires
 scipy==1.17.0  #algorithmes scientifiques avancés (statistiques, interpolation, optimisation, etc.)
 seaborn==0.13.2 #visualisation statistique basée sur matplotlib
+

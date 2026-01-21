@@ -1,5 +1,3 @@
-
-
 # --- Géométries des polygones ---
 
 STL_S2_POLYGON_4 = [

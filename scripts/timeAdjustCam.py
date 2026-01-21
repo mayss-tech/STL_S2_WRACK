@@ -12,14 +12,5 @@ def convert_to_utc(df, date_col='date', time_col='heure', tz_source='America/Tor
     df['datetime_utc'] = df['datetime_utc'].dt.tz_localize(None)
     return df
 
-csvs = [
-    r'Y:\Mayssa_louati\wrack_S2_NDVI\STL_DATA_CAM\2019stl.csv',
-    r'Y:\Mayssa_louati\wrack_S2_NDVI\STL_DATA_CAM\2020stl.csv'
-    
-]
 
-for fp in csvs:
-    df_raw = pd.read_csv(fp, sep=";")
-    df_clean = convert_to_utc(df_raw, date_col='date', time_col='heure',tz_source='America/Toronto')
-    df_clean.to_csv(fp.replace(".csv", "_UTC.csv"), index=False)
     
