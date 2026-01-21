@@ -8,3 +8,4 @@ pytz==2025.2 #gestion précise des fuseaux horaires
 scipy==1.17.0  #algorithmes scientifiques avancés (statistiques, interpolation, optimisation, etc.)
 seaborn==0.13.2 #visualisation statistique basée sur matplotlib
 
+#Il est recommandé de créer un dossier nommé output à la racine du projet, aux côtés des dossiers input et scripts, avant l’exécution du fichier main

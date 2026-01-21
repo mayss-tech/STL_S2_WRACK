@@ -25,7 +25,7 @@ S2c = (
     .filterBounds(ROI_STL)
 )
 
-# --- Joindre des 2 collections --- 
+# --- Joindre les 2 collections --- 
 S2_joined = ee.ImageCollection(
     ee.Join.saveFirst("cloud_prob").apply(
         primary=S2,

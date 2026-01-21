@@ -29,7 +29,7 @@ def plot_recouvrement():
     df_poly = df[df["name"] == "STL_S2_POLYGONE_4"]
     thr_vals, r_vals = [], []
 
-    for thr, g in df_poly.groupby("threshold"):
+    for thr, g in df_poly.groupby("threshold"):   #analyse la corrélation séparément pour chaque seuil
         x = pd.to_numeric(g["concentration_normalized"])
         y = pd.to_numeric(g["fraction_recouvrement_normalized"])
         r, _ = spearmanr(x, y)
@@ -75,7 +75,7 @@ def plot_recouvrement():
     )
 
 
-    # Mise en forme de la matrice
+    # mise en forme de la matrice
 
     all_names = df["name"].unique()
     heatmap_data = (

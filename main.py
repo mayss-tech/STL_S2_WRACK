@@ -1,7 +1,7 @@
 import ee
 from ee_init import init_gee
 from input.s2_collections import S2_joined
-from scripts import reprocessing,timeAdjustCam,plotting_stats,plotting_correlation,plotting_recouvrement
+from scripts import reprocessing, time_ajust_cam,plotting_stats,plotting_correlation,plotting_recouvrement
 from scripts.stats import NDVI_stats, NDVI_recouvrement
 import pandas as pd
 import datetime as dt
@@ -74,7 +74,7 @@ def main ():
 
     for fp in csvs:
         df_raw = pd.read_csv(fp, sep=";")
-        df_clean = timeAdjustCam.convert_to_utc(df_raw, date_col='date', time_col='heure',tz_source='America/Toronto')
+        df_clean = time_ajust_cam.convert_to_utc(df_raw, date_col='date', time_col='heure',tz_source='America/Toronto')
         df_clean.to_csv(fp.replace(".csv", "_UTC.csv"), index=False)
 
     print("l'heure est bien corrige en UTC")

@@ -10,14 +10,11 @@ import matplotlib.colors as mcolors
 
 def plot_correlation():
     df = pd.read_csv(r'Y:\Mayssa_louati\wrack_S2_NDVI\STL_STATS\table_finale_stl_2019_2024.csv',sep=',')
+  
     # --- Nettoyage global du tableau ---
     df = df.copy()
     df = df.replace([np.inf, -np.inf], np.nan)
     df = df.dropna()
-
-
-    #--- courbe de corrélation entre la concentration normalisée mesurée par caméra et le NDVI normalisé mesuré par satellite (S2)
-    #  pour différents polygones (corrélation de Spearman) ---
     df = df.drop_duplicates(
         subset=[
             "name",
@@ -26,6 +23,9 @@ def plot_correlation():
             "concentration_normalized"
         ]
     )
+
+    #--- courbe de corrélation entre la concentration normalisée mesurée par caméra et le NDVI normalisé mesuré par satellite (S2)
+    #  pour différents polygones (corrélation de Spearman) ---
     plt.figure(figsize=(12, 6))
 
     sns.set_theme(style="whitegrid", context='paper')
@@ -35,7 +35,7 @@ def plot_correlation():
         plt.scatter(
             subset["concentration_normalized"],
             subset["median_normalized"],
-            label=f"{name} (r={corr:.2f})",
+            label=f"{name} (r={corr:.2f})", #.2f juste 2 chiffre apres la virgule
             alpha=0.7
         )
 
@@ -64,7 +64,7 @@ def plot_correlation():
         ]
     )
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
-    df = df[df["name"] == "STL_S2_POLYGON_4"]
+    df = df[df["name"] == "STL_S2_POLYGONE_4"]
 
     # Corrélation
     r = df["median_normalized"].corr(
@@ -109,7 +109,7 @@ def plot_correlation():
     )
 
     # ajouter des dates à côté des points (max 3 par catégorie)
-    offsets = [(0, 0), (0, 0), (0, 0)]  # positions différentes
+    offsets = [(0, 0), (0, 0), (0, 0)]  # positions différentes (a changer)
 
     for cat, g in df.groupby("Categorie"):
         
@@ -179,7 +179,6 @@ def plot_correlation():
 
     # Lissage spline
     x = mdates.date2num(m.index)
-
     xs = np.linspace(x.min(), x.max(), 500)
     ndvi_s = make_interp_spline(x, m["median_normalized"], k=3)(xs)
     cam_s  = make_interp_spline(x, m["concentration_normalized"], k=3)(xs)
